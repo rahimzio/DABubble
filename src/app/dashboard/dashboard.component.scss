@@ -1,0 +1,42 @@
+@import "./../../styles.scss";
+
+section {
+  background-color: $bg-color;
+  display: flex;
+  justify-content: space-between;
+  height: calc(100% - 101px);
+}
+
+app-head-dashboard{
+  height: 101px;
+}
+
+.dashboard{
+  width: 100%;
+  margin-right: 20px
+}
+
+.chat-components{
+  width: 100%;
+  margin-right: 20px
+}
+
+@media (max-width: 1200px){
+  app-head-dashboard{
+    height: 180px;
+  }
+
+  section {
+    height: calc(100% - 180px);
+  }
+}
+
+@media (max-width: 500px) {
+  .dashboard{
+    margin-right: 0px;
+  }
+  
+  .chat-components{
+    margin-right: 0px;
+  }
+}

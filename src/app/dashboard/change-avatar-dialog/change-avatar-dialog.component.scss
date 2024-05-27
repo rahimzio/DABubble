@@ -1,0 +1,187 @@
+@import './../../../styles.scss';
+
+mat-card{
+    width: 500px;
+    height: 705px;
+    font-family: $nunito;
+    font-size: 24px;
+    font-weight: 600;
+    gap: 15px;
+    border-radius: 30px 0px 30px 30px;
+    overflow: hidden;
+}
+
+.header{
+    padding: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    h2{
+        font-family: $nunito;
+        font-weight: 600;
+        font-size: 24px;
+    }
+}
+
+.forward-button {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    padding-top: 40px;
+    padding-bottom: 40px;
+}
+
+.forward {
+    font-size: 18px;
+    font-weight: 700;
+    font-family: $nunito;
+    color: white;
+    border: none;
+    background-color: $purple1;
+    width: 137px;
+    height: 49px;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: background-color 125ms ease-in-out;
+
+    &:hover {
+        background-color: lighten($purple1, 10%);
+    }
+}
+
+.avatar-selection{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    h2{
+        font-family: $nunito;
+        font-weight: 700;
+        font-size: 24px;
+    }
+
+    >p{
+        font-family: $nunito;
+        font-weight: 400;
+        size: 16px;
+        width: 100%;
+    }
+}
+
+.selected-avatar{
+    width: 168px;
+    height: 168px;
+    margin-bottom: 32px;
+    border-radius: 100px;
+}
+
+.upload-img{
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    width: 100%;
+    padding-bottom: 16px;
+
+    p{
+        font-family: $nunito;
+        font-weight: 400;
+        size: 16px;
+    }
+}
+
+.upload-button {
+    font-size: 18px;
+    font-weight: 700;
+    font-family: $nunito;
+    color: $purple1;
+    border: 1px solid $purple2;
+    background-color: white;
+    width: 187px;
+    height: 49px;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: background-color 125ms ease-in-out;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &:hover {
+        background-color: $purple1;
+        color: white;
+    }
+}
+
+.avatar-imgs{
+    display: flex;
+    padding-bottom: 16px;
+
+    img{
+        cursor: pointer;
+        border-radius: 100px;
+        padding: 2px;
+
+        &:hover{
+            background-color: #e6e6e6;
+        }
+    }
+}
+
+input[type="file"] {
+    display: none;
+}
+
+.close {
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    background: url("../../../assets/img/close.svg") no-repeat;
+  
+    &:hover {
+      background: url("../../../assets/img/close-hover.svg") no-repeat;
+    }
+  }
+
+@media (max-width: 1300px) {
+  
+    .card-container {
+      padding-top: 30px;
+    }
+  
+    section {
+      width: 100%;
+      height: auto;
+    }
+  }
+  
+  @media (max-width: 650px) {
+    mat-card {
+      width: auto;
+      margin-left: 20px;
+      margin-right: 20px;
+    }
+    mat-card-content {
+      padding-left: 20px !important;
+      padding-right: 20px !important;
+      width: auto;
+    }
+  
+    mat-card-header {
+      > span {
+        font-size: 17px;
+      }
+    }
+
+    .avatar-imgs{
+        flex-wrap: wrap;
+    }
+  }
+
+  @media (max-width: 550px) {
+    .upload-img{
+        flex-direction: column;
+        gap: 15px;
+    }
+  }
+  

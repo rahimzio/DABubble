@@ -1,0 +1,126 @@
+<section [ngClass]="{ 'd-none': isSmallScreen || threadService.closeTab}">
+  <div class="thread-container">
+    <div class="thread-head">
+      <div class="head-text">
+        <h2>Thread</h2>
+        <p>#</p>
+        <p>{{currentChannelData?.name}}</p>
+      </div>
+      <div class="close w-h-40" (click)="Dnone()"></div>
+    </div>
+
+    <div class="chat">
+      <ng-container *ngFor="let messageObj of threadService.chatDatas; let i = index">
+        <!-- Überprüfe, ob der vorherige Eintrag existiert und das Datum anders ist -->
+        <ng-container
+          *ngIf="i === 0 || (threadService.chatDatas[i - 1].time | date:'dd.MM.yyyy') !== (messageObj.time | date:'dd.MM.yyyy')">
+          <div class="date-div">
+            <div class="line"></div>
+            <span class="date">{{ messageObj.time | date:'dd.MM.yyyy' }}</span>
+            <div class="line"></div>
+          </div>
+        </ng-container>
+
+         <!----------------------Edit Message Textarea------------------>
+         <div class="textarea-edit-container" *ngIf="editedMessageIndex === i">
+          <div class="center-edit-objects">
+              <textarea [(ngModel)]="messageForEdit" class="edit-message-textarea" name="" id="edit-message" cols="30"
+                  rows="10"></textarea>
+              <div class="edit-message-send-container">
+                  <div class="edit-img-container">
+                      <mat-icon (click)="openEmojiDialog($event, true, false, undefined, true)"  class="edit-emoji">sentiment_satisfied </mat-icon>
+                      <img class="delete-img" *ngIf="imgForDelete" [src]="imgForDelete" alt="">
+                      <mat-icon *ngIf="imgForDelete" (click)="deleteImg()" class="delete-img-btn">cancel </mat-icon>
+                  </div>
+                 
+                  <div class="edit-message-final-buttons">
+                      <div (click)="cancelEdit()" class="cancel-edit"> Abbrechen</div>
+                      <div (click)="saveEdit(messageObj.time, messageForEdit, imgForDelete)" class="send-edit"> Speichern</div>
+                  </div>
+              </div>
+          </div>
+
+      </div>
+
+        <div (mouseover)="showButton[i] = true" (mouseleave)="showButton[i] = false"
+          [ngClass]="messageObj.ownMessage ? 'you-chat-message' : 'chat-message'" class="chat-message">
+          <div *ngIf="messageObj?.message" class="message-avatar"><img class="message-avatar"
+              [src]="getUserAvatar(messageObj.user.id)" (click)="openUserDetail(messageObj.user)"></div>
+          <div *ngIf="messageObj?.message">
+            <div [ngClass]="messageObj.ownMessage ? 'you-name-time-div': 'name-time-div'">
+              <span *ngIf="messageObj.user.name" class="name" (click)="openUserDetail(messageObj.user)">{{
+               fireStoreService.getUserNameById(messageObj.user.id) }}</span>
+              <span class="time">{{ messageObj.time | date:'HH:mm' }}</span>
+            </div>
+            <div [ngClass]="messageObj.ownMessage ? 'you-message': 'message'">{{ messageObj.message }}
+              <img  matTooltip="Click for download" (click)="storageService.downloadImageFromChat(messageObj.fileUrl)" class="send-image" *ngIf="messageObj.fileUrl" [src]="messageObj.fileUrl" alt=""></div>
+            <div [ngClass]="messageObj.ownMessage ? 'own-message-reaction': 'message-reaction'">
+              <mat-icon (click)="openEmojiDialog($event, false, true, messageObj.time)"
+                class="add-reaction-icon">add_reaction</mat-icon>
+                <div *ngIf="messageObj.emoji.length > 0" class="show-reactions-container">
+                  <div (mouseover)="openReactionDialog($event, emoji)" (mouseleave)="closeReactionDialog()" (click)="addCurrentReaction(messageObj.time, emoji.emoji)" [style.display]="emoji.count > 0 ? 'flex' : 'none'" *ngFor="let emoji of messageObj.emoji"class="show-reactions">
+                    {{emoji.emoji}} {{emoji.count}}
+                    <ng-template  #reactionInformationDialog>
+                      <div class="reaction-information">
+                          <span class="current-emoji">{{currentHoverEmoji.emoji}}</span>
+                          <div  class="current-emoji-users"><div class="current-emoji-users">
+                              <ng-container *ngFor="let user of currentHoverEmoji.userNames.slice(0, 3); let i = index">
+                                <span>{{ user }}</span>
+                                <span *ngIf="i < 2 && i < currentHoverEmoji.userNames.length - 1">, </span> <!-- Füge ein Komma hinzu, wenn es nicht der letzte Benutzer ist -->
+                              </ng-container>
+                              <span *ngIf="currentHoverEmoji.userNames.length > 3">+{{ currentHoverEmoji.userNames.length - 3 }} weitere</span>
+                            </div></div>
+                      </div>
+                  </ng-template>
+                  </div>
+                </div>
+            </div>
+           
+          </div>
+          <div *ngIf="showButton[i]"
+            [ngClass]="messageObj.ownMessage ? 'own-quick-reactions-container' : 'quick-reactions-container'">
+            <mat-icon (click)="addQuickReaction(true, false, messageObj.time)" class="quick-reaction">👍</mat-icon>
+            <mat-icon (click)="addQuickReaction(false, true, messageObj.time)" class="quick-reaction">👎</mat-icon>
+            <mat-icon (click)="openEmojiDialog($event, false, true, messageObj.time)"
+              class="add-reaction-icon">add_reaction</mat-icon>
+            <mat-icon (click)="openEditMessageDialog($event, i)" class="edit-message-icon" *ngIf="messageObj.ownMessage && i !== 0">more_vert</mat-icon>
+            <ng-template #editMessageDialog>
+              <div class="edit-message-container">
+                  <div (click)="editMessage(messageObj.time, i)" class="edit-message-button">Naricht
+                      bearbeiten </div>
+
+              </div>
+          </ng-template>
+          </div>
+        </div>
+      </ng-container>
+    </div>
+
+    <div class="answer-section">
+      <div class="answer-field">
+        <textarea (keydown.enter)="onEnterPressed($event)" [(ngModel)]="message" name="answer" id="answerThread" cols="1" rows="40"
+          placeholder="Antworten..."></textarea>
+        <div class="button-row">
+          <div class="d-flex-sb">
+            <div id="fileUploadDivThread" (click)="openFilePicker()" class="add w-h-40"></div>
+            <div class="vector"></div>
+            <div class="emoji w-h-40" (click)="openEmojiDialog($event, true, false, undefined, false)"></div>
+            <div  (click)="callMember($event)" class="email w-h-40"></div>
+            <ng-template #atUserList>
+              <mat-card class="at-user-card">
+                  <div *ngFor="let user of users">
+                      <div (click)="userToTextarea(user.name)" class="show-at-user">
+                          <img class="at-user-img" [src]="user.avatar" alt="">
+                          {{user.name}}
+                      </div>
+                  </div>
+              </mat-card>
+
+          </ng-template>
+          </div>
+          <div (click)="sendMessageToThread(message)" class="send w-h-40"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

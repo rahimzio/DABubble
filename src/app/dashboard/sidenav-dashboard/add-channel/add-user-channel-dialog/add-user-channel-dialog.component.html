@@ -1,0 +1,60 @@
+<mat-card class="mat-card">
+    <div class="place_user_to_channel">
+        <div class="container_heading">
+            <h2>Leute hinzufügen</h2>
+            <button mat-mini-fab color="primary" class="back-button">
+                <mat-icon (click)="closeDialog()" class="back-icon">close</mat-icon>
+            </button>
+        </div>
+
+
+        <form>
+            <div class="container_input_add_user">
+                <input type="radio" name="addOption" [(ngModel)]="selectedOption" value="allUsers" />
+                <p>
+                    Alle Mitglieder zu <span>{{ newChannel.name }}</span> hinzufügen
+                </p>
+            </div>
+            <div class="container_input_add_user">
+                <input type="radio" name="addOption" [(ngModel)]="selectedOption" value="specificPeople" />
+                <p>Bestimmte Leute hinzufügen</p>
+            </div>
+            <div class="place_input_choose_user">
+                <input [(ngModel)]="currentName" (click)="showUser()" (ngModelChange)="showUser()" name="currentName"
+                    (keydown)="showUser()" *ngIf="selectedOption === 'specificPeople'" type="text"
+                    class="input_add inputAddUser" #userInput />
+                <ng-template #userListDialog>
+                    <div *ngIf=" userList && userList.length > 0" class="container_show_user">
+                        <div (click)="chooseUser(user.id)" *ngFor="let user of userList" class="box_user">
+                            <button>
+                                <img class="user_picture" [src]="user.avatar" alt="" />
+                                <div class="statuslight" [ngStyle]="{
+                      'background-color': user.isOnline ? 'green' : 'red'
+                    }" alt=""></div>
+                            </button>
+                            <p>{{ user.name }}</p>
+                        </div>
+                    </div>
+                </ng-template>
+                <div class="show-choosed-user">
+                    <div *ngFor="let user of selectedUser" class="choosed-user-box">
+                        <button>
+                            <img class="current-user-picture" [src]="user.avatar" alt="" />
+                            <div class="statuslight-choosed-user" [ngStyle]="{
+                      'background-color': user.isOnline ? 'green' : 'red'
+                    }" alt=""></div>
+                        </button>
+                        <p>{{ user.name }}</p>
+                        <button (click)="removeSelectedUser(user.id)" mat-mini-fab color="primary" class="back-button">
+                            <mat-icon  class="back-icon">close</mat-icon>
+                        </button>
+                    </div>
+
+                </div>
+            </div>
+            <div class="place_btn">
+                <button [disabled]="selectedOption == ''" (click)="addUsersToChannel()" class="create_btn">Erstellen</button>
+            </div>
+        </form>
+    </div>
+</mat-card>

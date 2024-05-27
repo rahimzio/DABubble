@@ -1,0 +1,32 @@
+@import "./../../../../styles.scss";
+
+mat-card{
+    width: 282px;
+    height: 181px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: $nunito;
+    font-size: 24px;
+    font-weight: 600;
+    gap: 15px;
+    border-radius: 30px 0px 30px 30px;
+    overflow: hidden;
+
+    div{
+        cursor: pointer;
+    }
+}
+
+.pad-but{
+    padding: 10px 70px;
+}
+
+.log-out{
+    border-radius: 100px;
+
+    &:hover{
+        background-color: $bg-color;
+        color: $purple3;
+    }
+}

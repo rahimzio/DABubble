@@ -1,0 +1,399 @@
+@import "../../../../../styles.scss";
+
+.mat-card {
+    width: 872px;
+    height: 539px;
+    border-radius: 30px;
+    padding: 40px;
+}
+
+.place_user_to_channel {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+
+    form {
+        display: flex;
+        flex-direction: column;
+        gap: 28px;
+    }
+
+    .container_heading {
+        margin: 8px;
+    }
+
+    .container_input_add_user {
+        display: flex;
+        gap: 16px;
+        align-items: center;
+
+        input {
+            cursor: pointer;
+        }
+
+        p {
+            font-size: 18px;
+            font-weight: 400;
+
+            span {
+                color: $purple1;
+            }
+        }
+    }
+
+    .place_btn {
+        width: 100%;
+        position: relative;
+
+        button {
+            position: absolute;
+            right: 32px;
+        }
+    }
+
+    .place_input_choose_user {
+        position: relative;
+    }
+
+    .inputAddUser {
+        padding-left: 28px;
+        font-size: 18px;
+    }
+
+    .container_show_user {
+        // position: absolute;
+        // background-color: white;
+        // left: 28px;
+        // top: 50px;
+        // border-radius: 32px;
+        // border-top-left-radius: 0;
+        // max-height: 130px;
+        // overflow: auto;
+        // border: 1px solid $light-purple;
+        // box-shadow: 0 6px 10px 0 #000000 20%;
+        // display: flex;
+        // flex-direction: column;
+        // justify-content: start;
+        // min-width: 40%;
+        // height: fit-content;
+        // gap: 8px;
+        // padding: 12px 0 16px 24px;
+        // z-index: 2;
+
+        .box_user {
+            display: flex;
+            gap: 16px;
+            align-items: center;
+            width: fit-content;
+            padding: 0 16px;
+            border-radius: 48px;
+            cursor: pointer;
+
+            &:hover {
+                background-color: $light-purple;
+            }
+
+            button {
+                position: relative;
+
+                .user_picture {
+                    border-radius: 50%;
+                    width: 60px;
+                    height: 60px;
+                }
+
+                .statuslight {
+                    border-radius: 50%;
+                    border: solid white 2px;
+                    position: absolute;
+                    height: 10px;
+                    width: 10px;
+                    right: 2px;
+                    bottom: 4.5px;
+                }
+            }
+
+            p {
+                font-size: 18px;
+                font-weight: 500;
+            }
+        }
+    }
+
+    .container_show_user::-webkit-scrollbar-track {
+        -webkit-box-shadow: inset 0 0 2px rgba(0, 0, 0, 0.3);
+        border-radius: 10px;
+        background-color: #f5f5f5;
+        margin-left: 1rem;
+        border-radius: 10px;
+        height: 80%;
+        background-color: transparent;
+        border-radius: 10px;
+    }
+
+    .container_show_user::-webkit-scrollbar {
+        width: 12px;
+        border-radius: 10px;
+        background-color: #f5f5f5;
+    }
+
+    .container_show_user::-webkit-scrollbar-thumb {
+        -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+        background-color: #c9b1b1;
+        border-radius: 10px;
+    }
+}
+
+.container_heading {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 16px;
+
+    h2 {
+        font-family: $nunito;
+        font-weight: 800;
+    }
+}
+
+.create_btn {
+    font-size: 18px;
+    font-weight: 700;
+    font-family: $nunito;
+    color: white;
+    border: none;
+    background-color: $purple1;
+    width: 137px;
+    height: 49px;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: background-color 125ms ease-in-out;
+
+    &:hover {
+        background-color: lighten($purple1, 10%);
+    }
+
+    &:disabled{
+        background-color: gray;
+    }
+}
+
+.input_add {
+    width: calc(100% - 40px);
+    min-height: 24px;
+    padding: 18px 20px 18px 40px;
+    border: solid 1px $light-purple;
+    border-radius: 36px;
+    outline: none;
+    font-size: 14px;
+    letter-spacing: 0.75px;
+}
+
+.inputAddUser {
+    padding-left: 28px;
+    font-size: 18px;
+}
+
+.user_picture {
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+}
+
+.statuslight {
+    border-radius: 50%;
+    border: solid white 2px;
+    position: absolute;
+    height: 10px;
+    width: 10px;
+    right: 2px;
+    bottom: 4.5px;
+}
+
+.container_show_user {
+
+    background-color: white;
+    left: 28px;
+    top: 50px;
+    border-radius: 32px;
+    border-top-left-radius: 0;
+    max-height: 130px;
+    overflow: auto;
+    border: 1px solid $light-purple;
+    box-shadow: 0 6px 10px 0 #000000 20%;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    min-width: 40%;
+    height: fit-content;
+    gap: 8px;
+    padding: 12px 0 16px 24px;
+    z-index: 2;
+    position: absolute;
+    left: -360px;
+    top: -1px;
+
+    &::-webkit-scrollbar-track {
+        -webkit-box-shadow: inset 0 0 2px rgba(0, 0, 0, 0.3);
+        border-radius: 10px;
+        background: $bg-color;
+        margin-left: 1rem;
+        border-radius: 10px;
+        height: 80%;
+        background-color: transparent;
+        border-radius: 10px;
+    }
+
+    &::-webkit-scrollbar {
+        width: 12px;
+        border-radius: 10px;
+        background-color: #f5f5f5;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+        background: $purple2;
+        border-radius: 8px;
+    }
+
+    &::-webkit-scrollbar-thumb:hover {
+        background: $purple3;
+    }
+
+    .box_user {
+        display: flex;
+        gap: 16px;
+        align-items: center;
+        width: fit-content;
+        padding: 0 16px;
+        border-radius: 48px;
+        cursor: pointer;
+
+        &:hover {
+            background-color: $light-purple;
+        }
+
+        button {
+            position: relative;
+
+            .user_picture {
+                border-radius: 50%;
+                width: 60px;
+                height: 60px;
+            }
+
+            .statuslight {
+                border-radius: 50%;
+                border: solid white 2px;
+                position: absolute;
+                height: 10px;
+                width: 10px;
+                right: 2px;
+                bottom: 4.5px;
+            }
+        }
+
+        p {
+            font-size: 18px;
+            font-weight: 500;
+        }
+    }
+}
+
+.show-choosed-user {
+    margin-top: 40px;
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.choosed-user-box {
+    display: flex;
+    align-items: center;
+    height: 60px;
+    gap: 8px;
+    display: flex;
+    background-color: $light-purple;
+    width: fit-content;
+    padding: 0 16px;
+    border-radius: 48px;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: 500;
+
+    >button {
+        position: relative;
+        display: flex;
+        align-items: center;
+    }
+}
+
+.current-user-picture {
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+}
+
+.statuslight-choosed-user {
+    border-radius: 50%;
+    border: solid white 2px;
+    position: absolute;
+    height: 10px;
+    width: 10px;
+    right: 2px;
+    bottom: 4.5px;
+}
+
+.input_add {
+    position: relative;
+}
+
+.inputAddUser {
+    position: relative;
+}
+
+.mdc-dialog.mdc-dialog__surface,
+.mdc-dialog.mdc-dialog__content {
+
+    overflow: visible;
+
+}
+
+::ng-deep .mdc-dialog__surface {
+    overflow-y: visible !important;
+    /* oder overflow-y: hidden; je nach Bedarf */
+}
+
+@media(max-width: 980px){
+    .mat-card {
+        width: 500px;
+    }
+
+    .container_show_user{
+        left: -156px;
+    }
+}
+
+@media(max-width: 570px){
+    .mat-card {
+        padding-bottom: 61px;
+        width: 352px;
+        height: auto;
+    }
+
+    .container_show_user{
+        left: -100px;
+        top: -71px;
+    }
+}
+
+@media(max-width: 399px){
+    .mat-card {
+        width: 280px;
+    }
+
+    .container_show_user{
+        left: -100px;
+        top: -71px;
+    }
+}

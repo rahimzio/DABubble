@@ -1,0 +1,44 @@
+<mat-card>
+  <div class="header">
+    <h2 mat-dialog-title>Dein Profil bearbeiten</h2>
+    <div class="close" (click)="close()"></div>
+  </div>
+  <div class="profilePicture">
+    <img
+      class="editPic"
+      src="assets/img/edit_square.svg"
+      (click)="changeAvatar()"
+    />
+    <img #profilePicture [src]="actualUser.avatar" (click)="changeAvatar()" />
+  </div>
+  <div class="input-section">
+    <div class="d-flex-align-center">
+      <img src="assets/img/account_circle.svg" />Vollständiger Name
+    </div>
+    <input
+      placeholder="Max Mustermann"
+      class="name-input input-field"
+      type="text"
+      [(ngModel)]="nameValue"
+    />
+  </div>
+  <div class="input-section">
+    <div class="d-flex-align-center">
+      <img src="assets/img/mail.svg" />E-Mail-Adresse
+    </div>
+    <input
+      placeholder="beispielname@email.com"
+      class="name-input input-field"
+      type="email"
+      [(ngModel)]="mailValue"
+      (input)="checkIfCorrectMailFormat()"
+    />
+    <p class="invalid-mail" [ngStyle]="{ display: !checkIfCorrectMailFormat() ? 'block' : 'none' }">
+      *Diese E-Mail-Adresse ist leider ungültig.
+    </p>
+  </div>
+  <div class="button-section">
+    <button class="cancle" (click)="close()">Abbrechen</button>
+    <button [disabled]="!checkIfCorrectMailFormat()" class="save" (click)="save()">Speichern</button>
+  </div>
+</mat-card>

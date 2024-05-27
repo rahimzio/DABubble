@@ -1,0 +1,294 @@
+@import "./../../styles.scss";
+
+section {
+  background-color: $bg-color;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+}
+
+.main-content {
+  max-width: 1920px;
+  width: 1920px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  flex-direction: column;
+}
+.logo-container {
+  position: absolute;
+  top: $padding-logo;
+  left: $padding-logo;
+  animation: show-logo 1s 3.5s forwards;
+  opacity: 0;
+}
+
+.new-user-info {
+  position: absolute;
+  right: $padding-logo;
+  top: $padding-logo;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  > span {
+    font-family: $nunito;
+    font-size: 18px;
+  }
+
+  > a {
+    display: flex;
+    justify-content: end;
+    text-decoration: none;
+    color: $purple2;
+    font-size: 18px;
+    width: 174px;
+    height: 42px;
+    align-items: center;
+    justify-content: center;
+    border: 1px transparent solid;
+    /* Transparente Border für Platzhalter */
+    border-radius: 30px;
+    transition: border-color 125ms ease-in-out;
+    /* Übergangseffekt für Border-Farbe */
+
+    &:hover {
+      border-color: $light-purple;
+      /* Border-Farbe beim Hover-Effekt ändern */
+    }
+  }
+}
+
+.back-button {
+  background: none;
+  border: none;
+  box-shadow: none;
+  > mat-icon {
+    color: black;
+  }
+  &:hover {
+    background-color: $bg-color;
+    box-shadow: none;
+    > mat-icon {
+      color: $purple3;
+    }
+  }
+}
+
+mat-card {
+  width: 606px;
+  border-radius: 30px;
+  display: flex;
+  z-index: 2;
+  align-items: center;
+  flex-direction: column;
+}
+
+.card-container {
+  padding-top: 75px;
+}
+
+mat-card-content {
+  max-height: 550px;
+  padding: 0 !important;
+  flex-direction: column;
+  display: flex;
+  align-items: flex-start;
+  margin: 20px;
+}
+
+mat-card-header {
+  display: flex;
+  align-items: start;
+  flex-direction: column;
+  padding-right: 10px;
+  padding-left: 0 !important;
+  padding-top: 0 !important;
+  overflow: auto;
+
+  h1 {
+    color: $purple1;
+    padding-top: 40px;
+    font-family: $nunito;
+    font-weight: 700;
+    font-size: 46px;
+    margin-bottom: 30px;
+  }
+  h2 {
+    color: $purple1;
+    font-family: $nunito;
+    font-size: 36px;
+    font-weight: 700;
+    padding-top: 40px;
+    letter-spacing: 0.01rem;
+  }
+
+  li {
+    font-family: $nunito;
+    font-size: 20px;
+    font-weight: 500;
+    margin: 0;
+  }
+  p {
+    font-family: $nunito;
+    font-size: 20px;
+    font-weight: 500;
+    margin: 0;
+  }
+  h3 {
+    font-family: $nunito;
+    font-size: 20px;
+    font-weight: 700;
+    margin: 0;
+    margin-bottom: 0.5rem;
+  }
+}
+mat-card-header::-webkit-scrollbar-track {
+  background: $bg-color;
+}
+
+mat-card-header::-webkit-scrollbar {
+  width: 8px;
+  border-radius: 8px;
+}
+
+mat-card-header::-webkit-scrollbar-thumb {
+  background: $purple2;
+  border-radius: 8px;
+}
+
+mat-card-header::-webkit-scrollbar-thumb:hover {
+  background: $purple3;
+}
+
+.footer-links {
+  width: 270px;
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  padding-top: 50px;
+
+  > a {
+    text-decoration: none;
+    cursor: pointer;
+    color: $purple2;
+    font-size: 18px;
+    border: 1px transparent solid;
+    border-radius: 30px;
+    transition: border-color 125ms ease-in-out;
+    width: 174px;
+    height: 42px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &:hover {
+      border-color: $light-purple;
+    }
+  }
+}
+
+
+@keyframes show-logo {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@media (max-width: 1300px) {
+  .logo-container {
+    position: static;
+    margin-top: 30px;
+    order: 1;
+  }
+
+  .new-user-info {
+    position: static;
+    order: 3;
+    padding-top: 30px;
+  }
+
+  .card-container {
+    padding-top: 30px;
+    order: 2;
+  }
+
+  .footer-links {
+    order: 4;
+    padding-top: 30px;
+    padding-bottom: 30px;
+  }
+
+  section {
+    width: 100%;
+    height: auto;
+  }
+}
+
+@media (max-width: 650px){
+    mat-card {
+        width: auto;
+        margin-left: 20px;
+        margin-right: 20px;
+      }
+    mat-card-content{
+        width: auto;
+      }
+    
+    mat-card-header {
+        h1 {
+          font-size: 32px;
+        }
+
+        h2{
+          font-size: 24px;
+        }
+      
+        li {
+          font-size: 17px;
+        }
+
+        p {
+          font-size: 17px;
+        }
+      }
+}
+
+@media (max-width: 450px){
+  mat-card {
+      width: auto;
+      margin-left: 10px;
+      margin-right: 10px;
+    }
+  mat-card-content{
+      width: auto;
+    }
+  
+  mat-card-header {
+      h1 {
+        font-size: 20px;
+      }
+
+      h2{
+        font-size: 17px;
+      }
+
+      h3{
+        font-size: 15px;
+      }
+    
+      li {
+        font-size: 14px;
+      }
+
+      p {
+        font-size: 14px;
+      }
+    }
+}

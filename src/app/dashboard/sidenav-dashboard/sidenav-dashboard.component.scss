@@ -1,0 +1,407 @@
+@import "../../../styles.scss";
+
+section {
+  font-family: $nunito;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  position: relative;
+  min-width: 25px;
+  z-index: 1;
+  height: 100%;
+}
+
+.sidenav {
+  height: 100%;
+  width: 306px;
+  padding: 40px 30px 40px 30px;
+  background-color: white;
+  border-radius: 32px;
+  margin: 20px;
+  overflow: hidden;
+}
+
+.sidenav_head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  h3 {
+    margin: 0;
+    font-family: $nunito;
+    font-weight: 800;
+  }
+  button {
+    border: none;
+    background-color: transparent;
+  }
+}
+
+.sidenav_head_left {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+.sidenav_main {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.sidenav_container_channels {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  gap: 16px;
+  div {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    img {
+      object-fit: contain;
+      transform: rotate(-90deg);
+    }
+    h4 {
+      margin: 0;
+      font-weight: 700;
+    }
+  }
+  .box_add {
+    flex: 1;
+    position: relative;
+    button {
+      position: absolute;
+      left: 108px;
+    }
+  }
+}
+.channel-overview {
+  max-height: 150px;
+  overflow: auto;
+}
+
+.sidenav_place_channel_infos {
+  margin-left: 26px;
+  display: flex;
+  flex-direction: column;
+
+  .sidenav_container_channel_info {
+    display: flex;
+    justify-content: start;
+    padding-bottom: 24px;
+    
+    div {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 16px;
+      gap: 12px;
+      padding: 2px 20px 2px 20px;
+      background-color: $bg-color;
+      color: $purple1;
+      cursor: pointer;
+      p {
+        font-weight: 600;
+        font-size: 600;
+      }
+    }
+  }
+}
+
+.sidenav_container_add_channel {
+  display: flex;
+  justify-content: start;
+  button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 16px;
+    gap: 12px;
+    padding: 2px 20px 2px 20px;
+    p {
+      font-weight: 600;
+    }
+  }
+}
+
+.sidenav_container_directmessages {
+  display: flex;
+  justify-content: start;
+  gap: 18px;
+  div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 16px;
+    gap: 14px;
+  }
+  h4 {
+    font-weight: 700;
+  }
+}
+
+.sidenav_container_user {
+  margin-left: 26px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  overflow-y: auto;
+  max-height: 300px;
+
+  .sidenav_box_user {
+    display: flex;
+    justify-content: start;
+    .sidenav_place_user {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 16px;
+      gap: 12px;
+      padding: 2px 20px 2px 20px;
+      div {
+        position: relative;
+        .user_picture {
+          border-radius: 50%;
+          width: 75px;
+          height: 75px;
+        }
+        .statuslight {
+          border-radius: 50%;
+          border: solid white 2px;
+          // background-color: rgb(19, 173, 19);
+          position: absolute;
+          height: 10px;
+          width: 10px;
+          right: 2px;
+          bottom: 4.5px;
+        }
+      }
+      p {
+        font-weight: 600;
+      }
+    }
+  }
+}
+.rotated {
+  transform: rotate(-90deg); /* Rotate the image by 90 degrees */
+  transition: transform 0.1s ease; /* Add a smooth transition effect */
+}
+
+.rotatedBack {
+  transform: rotate(0deg); /* Rotate the image by 90 degrees */
+  transition: transform 0.1s ease;
+}
+
+/* Design Scrollbar */
+.sidenav_container_user::-webkit-scrollbar {
+  width: 8px;
+  border-radius: 8px;
+}
+
+.sidenav_container_user::-webkit-scrollbar-track {
+  background: $bg-color;
+}
+
+.sidenav_container_user::-webkit-scrollbar-thumb {
+  background: $purple2;
+  border-radius: 8px;
+}
+
+.sidenav_container_user::-webkit-scrollbar-thumb:hover {
+  background: $purple3;
+}
+
+.channel-overview::-webkit-scrollbar {
+  width: 8px;
+  border-radius: 8px;
+}
+
+.channel-overview::-webkit-scrollbar-track {
+  background: $bg-color;
+}
+
+.channel-overview::-webkit-scrollbar-thumb {
+  background: $purple2;
+  border-radius: 8px;
+}
+
+.channel-overview::-webkit-scrollbar-thumb:hover {
+  background: $purple3;
+}
+
+.hide-sidenav {
+  transform: rotate(-90deg);
+  transform-origin: top left;
+  position: absolute;
+  left: 0px;
+  white-space: nowrap;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 700px;
+  cursor: pointer;
+  background-color: white;
+  border-radius: 0px 0px 30px 30px;
+  box-shadow: -4px 4px 7px 0px rgba($color: #000000, $alpha: 0.2);
+  gap: 10px;
+  padding: 7px 23px;
+
+  img {
+    transform: rotate(90deg);
+  }
+
+  p {
+    font-family: $nunito;
+    font-weight: 500;
+    size: 20px;
+  }
+
+  &:hover {
+    p{
+    color: $purple1;
+    }
+  }
+}
+
+.hide{
+  display: none;
+}
+
+// mobile
+
+.mobile{
+  width: 100vw;
+  display: none;
+  margin-top: 80px;
+  height: calc(100vh - 80px);
+}
+
+.sidenav-mobile {
+  padding: 40px 20px;
+  background-color: white;
+  overflow: hidden;
+  height: calc(100% - 80px);
+}
+
+.input-mobile {
+
+  border: 1px solid $bg-color;
+  outline: none;
+  border-radius: 48px;
+  width: calc(100% - 48px);
+  height: 38px;
+  background: url('../../../assets/img/search.png') no-repeat;
+  background-origin: content-box;
+  background-position: right center;
+  position: relative;
+  background-color: white;
+  padding: 8px 24px;
+  margin-bottom: 12px;
+}
+
+.show-filter-contend {
+  position: absolute;
+  left: 50px;
+  width: 300px;
+  background: white;
+  height: auto;
+  z-index: 5555;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding-bottom: 16px;
+  border-radius: 0px 0px 20px 20px;
+}
+
+.search-channel {
+  font-size: 14px;
+  font-weight: 500;
+  color: $purple1;
+  height: 32px;
+  border: 1px solid $purple2;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  padding-left: 8px;
+  cursor: pointer;
+  transition: 125ms ease-in-out;
+
+  &:hover {
+    background-color: $bg-color;
+  }
+}
+
+.search-user {
+  font-size: 14px;
+    font-weight: 500;
+  color: $purple1;
+  height: 32px;
+  border: 1px solid $purple2;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  padding-left: 8px;
+  gap: 8px;
+  cursor: pointer;
+  transition: 125ms ease-in-out;
+
+  &:hover {
+    background-color: $bg-color;
+  }
+}
+
+.search-user-img {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+}
+
+.sidenav_info_mobile{
+  display: flex;
+  align-items: center;
+}
+
+.search-message {
+  font-size: 14px;
+    font-weight: 500;
+    color: #444df2;
+    height: 32px;
+    border: 1px solid #797ef3;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    padding-left: 8px;
+    gap: 8px;
+    cursor: pointer;
+    transition: 125ms ease-in-out;
+    padding-top: 8px;
+    padding-bottom: 8px;
+
+  &:hover {
+    background-color: $bg-color;
+  }
+}
+
+@media(max-width: 500px){
+  .mobile{
+    display: block;
+  }
+
+  section{
+    display: none;
+  }
+}
+
+
+@media(max-width: 380px){
+  .sidenav_container_channels {
+    .box_add {
+      flex: 1;
+      position: relative;
+      button {
+        position: absolute;
+        left: 80px;
+      }
+    }
+  }
+}

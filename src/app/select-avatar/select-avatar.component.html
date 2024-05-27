@@ -1,0 +1,49 @@
+<section>
+  <div class="main-content">
+    <div class="logo-container">
+      <img src="assets/img/home-workspace.svg" alt="" />
+    </div>
+    <div class="card-container">
+      <mat-card>
+        <div class="back-arrow-box" routerLink="/">
+          <div class="back-arrow"></div>
+        </div>
+        <mat-card-content>
+          <mat-card-header>
+            <h1>Wähle deinen Avatar</h1>
+          </mat-card-header>
+          <div class="avatar-selection">
+            <img [src]="avatar" class="selected-avatar"  alt="">
+            <h2>{{name}}</h2>
+            <p>Aus der Liste wählen</p>
+            <div class="avatar-imgs">
+                <img id="assets/img/avatars/avatar-1.svg" src="assets/img/avatars/avatar-1.svg" alt="" (click)="selectNewAvatar($event)">
+                <img id="assets/img/avatars/avatar-2.svg" src="assets/img/avatars/avatar-2.svg" alt="" (click)="selectNewAvatar($event)">
+                <img id="assets/img/avatars/avatar-3.svg" src="assets/img/avatars/avatar-3.svg" alt="" (click)="selectNewAvatar($event)">
+                <img id="assets/img/avatars/avatar-4.svg" src="assets/img/avatars/avatar-4.svg" alt="" (click)="selectNewAvatar($event)">
+                <img id="assets/img/avatars/avatar-5.svg" src="assets/img/avatars/avatar-5.svg" alt="" (click)="selectNewAvatar($event)">
+                <img id="assets/img/avatars/avatar-6.svg" src="assets/img/avatars/avatar-6.svg" alt="" (click)="selectNewAvatar($event)">
+            </div>
+            <div class="upload-img">
+                <p>eigenes Bild verwenden</p>
+                <label class="upload-button">
+                <input (change)="uploadOwnAvatar($event)" type="file">
+                Datei hochladen
+              </label>
+            </div>  
+          </div>
+          <div class="forward-button">
+            <button (click)="updateAvatar()" class="forward">Weiter</button>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+    <div class="footer-links">
+      <a routerLink="/imprint">Impressum</a>
+      <a routerLink="/dataprotection">Datenschutz</a>
+    </div>
+  </div>
+  <div *ngIf="selectSucceed" id="success-box" class="overlay">
+    <img src="assets/img/konto_erfolgreich_erstellt.svg" alt="">
+  </div>
+</section>

@@ -1,0 +1,278 @@
+@import "../../../styles.scss";
+
+section {
+  background-color: $bg-color;
+  font-family: $nunito;
+}
+
+.head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 10%;
+  padding: 25px 0 0 45px;
+  gap: 50px;
+}
+
+input {
+  font-family: $nunito;
+  border: none;
+  outline: none;
+  border-radius: 48px;
+  padding: 16px 32px 16px 32px;
+  width: 100%;
+  height: 38px;
+  background: url('../../../assets/img/search.png') no-repeat;
+  background-origin: content-box;
+  background-position: right center;
+  position: relative;
+  background-color: white;
+}
+
+.container_current_user {
+  display: flex;
+  width: 342px;
+  height: 70px;
+  gap: 16px;
+  align-items: center;
+  justify-content: end;
+  padding-right: 15px;
+  position: relative;
+
+  h2 {
+    margin: 0;
+    font-family: $nunito;
+    font-weight: 700;
+  }
+
+  div {
+    background-color: white;
+    border-radius: 50%;
+    width: 70px;
+    height: 70px;
+    overflow: hidden;
+  }
+
+  button {
+    border: none;
+    background-color: transparent;
+  }
+
+  .statuslight {
+    border-radius: 50%;
+    border: solid white 2px;
+    background-color: rgb(19, 173, 19);
+    position: absolute;
+    height: 10px;
+    width: 10px;
+    right: 67px;
+    bottom: 4.5px;
+  }
+}
+
+.logo_container {
+  img {
+    width: 242px;
+    height: 70px;
+  }
+}
+
+.profile-img {
+  width: 70px;
+  height: 70px;
+  cursor: pointer;
+}
+
+.show-filter-contend {
+  position: absolute;
+  left: 127px;
+  width: 500px;
+  background: white;
+  height: auto;
+  z-index: 5555;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding-bottom: 16px;
+  border-radius: 0px 0px 20px 20px;
+}
+
+.input-filter-container {
+  width: 60%;
+  position: relative;
+}
+
+.back {
+  width: 40px !important;
+  height: 40px !important;
+  cursor: pointer;
+}
+
+
+
+@media (max-width: 1200px) {
+  .head {
+    flex-direction: column;
+    padding: 0;
+  }
+
+  .input-filter-container {
+    width: auto;
+  }
+
+  .logo_container {
+    order: 1;
+    position: absolute;
+    left: 20px;
+    top: 20px;
+  }
+
+  .profile {
+    order: 2;
+  }
+
+  input {
+    order: 3;
+    width: 80vw;
+    margin-top: 110px;
+  }
+
+  .container_current_user {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    padding-right: 0px;
+  }
+}
+
+@media (max-width: 750px) {
+  .show-filter-contend {
+    left: 50px;
+  }
+}
+
+@media (max-width: 600px) {
+
+  button,
+  h2 {
+    display: none;
+  }
+
+  .logo_container {
+    img {
+      width: 150px;
+      height: auto;
+    }
+  }
+
+  .profile-img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+  }
+
+  .container_current_user {
+    width: 70px;
+
+    div {
+      background-color: $bg-color;
+    }
+
+    .statuslight {
+      display: none;
+    }
+
+    .profile {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 50px;
+      height: auto;
+    }
+  }
+
+  .container_current_user {
+    top: 10px;
+  }
+
+  input {
+    padding: 8px 24px;
+    margin-top: 90px;
+  }
+
+  .show-filter-contend {
+    left: 15px;
+    width: 350px;
+  }
+}
+
+
+@media(max-width: 500px) {
+  input {
+    display: none;
+  }
+
+  ;
+}
+
+.search-channel {
+  font-size: 18px;
+  font-weight: 700;
+  color: $purple1;
+  height: 32px;
+  border: 1px solid $purple2;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  padding-left: 8px;
+  cursor: pointer;
+  transition: 125ms ease-in-out;
+
+  &:hover {
+    background-color: $bg-color;
+  }
+}
+
+.search-user {
+  font-size: 18px;
+  font-weight: 700;
+  color: $purple1;
+  height: 32px;
+  border: 1px solid $purple2;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  padding-left: 8px;
+  gap: 8px;
+  cursor: pointer;
+  transition: 125ms ease-in-out;
+
+  &:hover {
+    background-color: $bg-color;
+  }
+}
+
+.search-user-img {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+}
+
+.search-message {
+  font-size: 18px;
+  font-weight: 700;
+  color: $purple1;
+  height: 32px;
+  border: 1px solid $purple2;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  padding-left: 8px;
+  gap: 8px;
+  cursor: pointer;
+  transition: 125ms ease-in-out;
+
+  &:hover {
+    background-color: $bg-color;
+  }
+}

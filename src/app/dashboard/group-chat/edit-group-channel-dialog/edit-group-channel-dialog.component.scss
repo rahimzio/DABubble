@@ -1,0 +1,155 @@
+@import "./../../../../styles.scss";
+
+mat-card {
+    width: 872px;
+    height: 616px;
+    font-family: $nunito;
+    font-size: 18px;
+    gap: 15px;
+    border-radius: 0px 30px 30px 30px;
+    overflow: hidden;
+    padding: 30px;
+}
+
+h2 {
+    font-size: 24px;
+    font-weight: 700;
+}
+
+h3 {
+    font-weight: 700;
+}
+
+.close {
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    background: url("../../../../assets/img/close.svg") no-repeat;
+
+    &:hover {
+        background: url("../../../../assets/img/close-hover.svg") no-repeat;
+    }
+}
+
+.header {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.edit-btn {
+    font-weight: 600;
+    color: $purple1;
+    cursor: pointer;
+
+    &:hover {
+        font-weight: 700;
+    }
+}
+
+.head-cont {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+}
+
+.chan-name {
+    border: 1px solid $light-purple;
+    border-radius: 20px;
+    height: 114px;
+}
+
+.descr-sect {
+    border: 1px solid $light-purple;
+    border-radius: 20px;
+    height: 273px;
+}
+
+.pdlr-15 {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.pdb-15 {
+    padding-bottom: 15px;
+}
+
+.line {
+    border: 1px solid $light-purple;
+    margin: 15px;
+}
+
+.name {
+    font-size: 24px;
+    font-weight: 400;
+    color: $purple3;
+}
+
+.edit-channelname {
+    height: 24px;
+    border: 1px solid $light-purple;
+    border-radius: 40px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 18px 20px;
+
+    input {
+        border: none;
+        font-family: $nunito;
+        font-size: 18px;
+        font-weight: 400;
+        width: 100%;
+
+        &:focus-visible {
+            border: none;
+        }
+    }
+
+}
+
+.leave-btn-container {
+    width: 100%;
+    display: flex;
+    justify-content: end;
+}
+
+.leave-channel-btn {
+    color: white;
+    width: 204px;
+    height: 50px;
+    border-radius: 25px;
+    background-color: $purple1;
+    font-weight: 700;
+    font-size: 18px;
+    font-family: $nunito;
+    border: none;
+
+    &:hover{
+        background-color: lighten($purple1, 10%);
+    }
+}
+
+@media (max-width: 1000px){
+    mat-card {
+        width: 85vw;
+        padding: 15px;
+
+    }
+
+    h2 {
+        font-size: 20px;
+    }
+
+}
+
+@media (max-width: 500px){
+    mat-card {
+        width: 100vw;
+        height: 100vh;
+        border-radius: 0px;
+    }
+}

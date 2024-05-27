@@ -1,0 +1,31 @@
+<section>
+  <div class="head">
+    <div class="logo_container">
+      <img class="back" src="assets/img/go-back-arrow.svg" *ngIf="!sidenavVisible && groupChatVisible || !sidenavVisible && directChatVisible" (click)="backClicked.emit()">
+      <img src="assets/img/home-workspace.svg" alt="" />
+    </div>
+    <div class="input-filter-container" >
+      <input (keydown)="filterChannelsAndUsers()" (ngModelChange)="filterChannelsAndUsers()"
+      (input)="filterChannelsAndUsers()" [(ngModel)]="searchTerm" type="text" />
+      <div class="show-filter-contend" *ngIf="searchTerm && searchTerm[0] === '@' || searchTerm && searchTerm[0] === '#' || searchTerm ">
+        <div class="search-channel" (click)="openChannel(channel.id)" *ngFor="let channel of filteredChannels"># {{ channel.name }}</div>
+        <div class="search-user" (click)="openUserMessage(user.id)" *ngFor="let user of filteredUsers"> <img class="search-user-img" [src]="user.avatar" alt="">{{ user.name }}</div>
+        <ng-container  *ngIf="!searchTerm || (searchTerm && searchTerm[0] !== '@' && searchTerm[0] !== '#')">
+        <div class="search-message" (click)="openChannel(message.channelId)" *ngFor="let message of filteredMessages"> Message:  {{message.message}}</div>
+      </ng-container>
+      </div>
+    </div>
+
+    <div class="container_current_user">
+      <h2>{{this.name}}</h2>
+      <div class="profile">
+        <img #profilePicture class="profile-img" [src]="this.downloadService.downloadedProfileImg" alt=""
+          (click)="openDialog()">
+      </div>
+      <div class="statuslight" src="" alt=""></div>
+      <button>
+        <img src="assets/img/keyboard_arrow_down.png" (click)="openDialog()" />
+      </button>
+    </div>
+  </div>
+</section>

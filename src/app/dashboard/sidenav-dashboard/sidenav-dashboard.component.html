@@ -1,0 +1,239 @@
+<section>
+  <div class="sidenav" [ngClass]="{ hide: sidenavIsHide }">
+    <div class="sidenav_head">
+      <div class="sidenav_head_left">
+        <img src="assets/img/Workspace logo.png" alt="" />
+        <h3>Devspace</h3>
+      </div>
+    </div>
+    <div class="sidenav_main">
+      <div class="sidenav_container_channels">
+        <button (click)="togglechannelsMenu()">
+          <img
+            [class.rotated]="!channelsmenu"
+            [class.rotatedBack]="channelsmenu"
+            src="assets/img/arrow_drop_down.png"
+            alt=""
+          />
+        </button>
+        <div>
+          <img src="assets/img/workspaces.png" alt="" />
+          <h4>Channels</h4>
+        </div>
+        <div class="box_add">
+          <button (click)="toggleChannelOverlay()" class="btn_add">
+            <img src="assets/img/19. add.png" alt="" />
+          </button>
+        </div>
+      </div>
+      <div
+        [@menuVisibility]="channelsmenu ? 'visible' : 'hidden'"
+        class="sidenav_place_channel_infos"
+      >
+        <div class="channel-overview">
+          <div
+            (click)="openGroupChat(channels.id)"
+            *ngFor="let channels of channelService.channels"
+            class="sidenav_container_channel_info"
+          >
+            <div class="sidenav_info">
+              <img src="assets/img/tag.png" alt="" />
+              <p>{{ channels.name }}</p>
+            </div>
+          </div>
+        </div>
+        <!-- button neuer Channel -->
+        <div class="sidenav_container_add_channel">
+          <button (click)="toggleChannelOverlay()">
+            <img src="assets/img/add_circle.png" alt="" />
+            <p>Channel hinzufügen</p>
+          </button>
+        </div>
+      </div>
+      <div class="sidenav_container_directmessages">
+        <button (click)="toggleUsersMenu()">
+          <img
+            [class.rotated]="!userMenu"
+            [class.rotatedBack]="userMenu"
+            src="assets/img/arrow_drop_down.png"
+            alt=""
+          />
+        </button>
+        <div>
+          <img src="assets/img/account_circle.png" alt="" />
+          <h4>Direktnachrichten</h4>
+        </div>
+      </div>
+      <div
+        *ngIf="users && users.length > 0 && profilePicturesLoaded"
+        [@menuVisibility]="userMenu ? 'visible' : 'hidden'"
+        class="sidenav_container_user"
+      >
+        <button
+          (click)="openDirectChat(user.id)"
+          *ngFor="let user of users"
+          class="sidenav_box_user"
+        >
+          <div class="sidenav_place_user">
+            <div>
+              <img
+                #profilePicture
+                [src]="user.avatar"
+                class="user_picture"
+                alt=""
+              />
+              <div
+                [ngStyle]="{
+                  'background-color': user.isOnline ? 'green' : 'red'
+                }"
+                #statusLight
+                class="statuslight"
+                src=""
+                alt=""
+              ></div>
+            </div>
+            <p>{{ firestoreService.getUserNameById(user.id)}}</p>
+          </div>
+        </button>
+      </div>
+    </div>
+    <app-add-channel
+      [users]="users"
+      (close)="toggleChannelOverlay()"
+      *ngIf="channelOverlay"
+    ></app-add-channel>
+  </div>
+
+  <!-- Button zum ausblenden der Sidenav -->
+  <div
+    class="hide-sidenav"
+    *ngIf="!sidenavIsHide"
+    (click)="toggleSidenav()"
+    (mouseenter)="onMouseEnter()"
+    (mouseleave)="onMouseLeave()"
+  >
+    <p>Workspace-Menü schließen</p>
+    <img [src]="imageUrl" />
+  </div>
+  <div
+    class="hide-sidenav"
+    *ngIf="sidenavIsHide"
+    (click)="toggleSidenav()"
+    (mouseenter)="onMouseEnter()"
+    (mouseleave)="onMouseLeave()"
+  >
+    <p>Workspace-Menü öffnen</p>
+    <img [src]="imageUrl" />
+  </div>
+</section>
+
+<div class="mobile">
+  <div class="sidenav-mobile">
+    <input (keydown)="filterChannelsAndUsers()" (ngModelChange)="filterChannelsAndUsers()"
+    (input)="filterChannelsAndUsers()" [(ngModel)]="searchTerm" class="input-mobile" type="text" />
+    <div class="show-filter-contend" *ngIf="searchTerm && searchTerm[0] === '@' || searchTerm && searchTerm[0] === '#' || searchTerm ">
+      <div class="search-channel" (click)="openChannel(channel.id)" *ngFor="let channel of filteredChannels"># {{ channel.name }}</div>
+      <div class="search-user" (click)="openUserMessage(user.id)" *ngFor="let user of filteredUsers"> <img class="search-user-img" [src]="user.avatar" alt="">{{ user.name }}</div>
+      <ng-container  *ngIf="!searchTerm || (searchTerm && searchTerm[0] !== '@' && searchTerm[0] !== '#')">
+        <div class="search-message" (click)="openChannel(message.channelId)" *ngFor="let message of filteredMessages"> Message:  {{message.message}}</div>
+      </ng-container>
+    </div>
+    <div class="sidenav_main">
+      <div class="sidenav_container_channels">
+        <button (click)="togglechannelsMenu()">
+          <img
+            [class.rotated]="!channelsmenu"
+            [class.rotatedBack]="channelsmenu"
+            src="assets/img/arrow_drop_down.png"
+            alt=""
+          />
+        </button>
+        <div>
+          <img src="assets/img/workspaces.png" alt="" />
+          <h4>Channels</h4>
+        </div>
+        <div class="box_add">
+          <button (click)="toggleChannelOverlay()" class="btn_add">
+            <img src="assets/img/19. add.png" alt="" />
+          </button>
+        </div>
+      </div>
+      <div
+        [@menuVisibility]="channelsmenu ? 'visible' : 'hidden'"
+        class="sidenav_place_channel_infos"
+      >
+        <div class="channel-overview">
+          <div
+            (click)="openGroupChat(channels.id)"
+            *ngFor="let channels of channelService.channels"
+            class="sidenav_container_channel_info"
+          >
+            <div class="sidenav_info_mobile">
+              <img src="assets/img/tag.png" alt="" />
+              <p>{{ channels.name }}</p>
+            </div>
+          </div>
+        </div>
+        <!-- button neuer Channel -->
+        <div class="sidenav_container_add_channel">
+          <button (click)="toggleChannelOverlay()">
+            <img src="assets/img/add_circle.png" alt="" />
+            <p>Channel hinzufügen</p>
+          </button>
+        </div>
+      </div>
+      <div class="sidenav_container_directmessages">
+        <button (click)="toggleUsersMenu()">
+          <img
+            [class.rotated]="!userMenu"
+            [class.rotatedBack]="userMenu"
+            src="assets/img/arrow_drop_down.png"
+            alt=""
+          />
+        </button>
+        <div>
+          <img src="assets/img/account_circle.png" alt="" />
+          <h4>Direktnachrichten</h4>
+        </div>
+      </div>
+      <div
+        *ngIf="users && users.length > 0 && profilePicturesLoaded"
+        [@menuVisibility]="userMenu ? 'visible' : 'hidden'"
+        class="sidenav_container_user"
+      >
+        <button
+          (click)="openDirectChat(user.id)"
+          *ngFor="let user of users"
+          class="sidenav_box_user"
+        >
+          <div class="sidenav_place_user">
+            <div>
+              <img
+                #profilePicture
+                [src]="user.avatar"
+                class="user_picture"
+                alt=""
+              />
+              <div
+                [ngStyle]="{
+                  'background-color': user.isOnline ? 'green' : 'red'
+                }"
+                #statusLight
+                class="statuslight"
+                src=""
+                alt=""
+              ></div>
+            </div>
+            <p>{{ user.name }}</p>
+          </div>
+        </button>
+      </div>
+    </div>
+    <app-add-channel
+      [users]="users"
+      (close)="toggleChannelOverlay()"
+      *ngIf="channelOverlay"
+    ></app-add-channel>
+  </div>
+
+</div>

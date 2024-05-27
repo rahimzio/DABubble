@@ -1,0 +1,84 @@
+ <section [ngClass]="{ 'd-none': isSmallScreen }">
+    <div class="chat-header">
+
+        <div *ngIf="testChannel" class="chat-header-left">
+            <div><img src="assets/img/black_tag.png"></div>
+            <span>{{testChannel.description}}</span>
+            <div><img src="assets/img/arrow_drop_down.png"></div>
+        </div>
+
+        <div  *ngIf="testChannel"  class="chat-header-right">
+            <div class="header-avatar"> 
+            
+                    <img *ngFor="let users of testChannel.usersInChannel" [src]="users.avatar" class="avatar-img">
+                
+            </div>
+            <span class="chat-members-num">{{testChannel.usersInChannel.length}}</span>
+            <div class="add-person"><img src="assets/img/person_add.png"></div>
+        </div>
+
+    </div>
+
+    <div class="chat">
+        <div class="date-div">
+            <div class="line"></div> <span class="date">18.03.2024</span> <div class="line"></div>
+        </div>
+
+        <div class="chat-message">
+            <div class="message-avatar"><img src="assets/img/avatars/avatar-3.svg"></div>
+            <div>
+                <div class="name-time-div">
+                    <span class="name">Noah Braun</span>
+                    <span class="time">14:45 Uhr</span>
+                </div>
+                <div class="message">Welche Version von Angular ist gerade aktuell</div>
+                <div class="message-reaction">
+                    <div class="reaction w-h-40"></div>
+                    <div class="comment w-h-40"></div>
+                </div>
+            </div>
+            
+        </div>
+        
+        <div class="date-div">
+            <div class="line"></div> <span class="date">19.03.2024</span> <div class="line"></div>
+        </div>
+
+        <div class="you-chat-message">
+            <div>
+                <div class="name-time-div">
+                    <span class="time">02:42 Uhr</span>
+                    <span class="name">Fredika Brend</span>
+                </div>
+                <div class="you-message">die aktuellste!!</div>
+                <div class="message-reaction">
+                    <div class="reaction w-h-40"></div>
+                    <div class="comment w-h-40"></div>
+                </div>
+            </div>
+            <div class="message-avatar"><img src="assets/img/avatars/avatar-1.svg"></div>
+        </div>
+
+    </div>
+<div class="answer-section">
+        <div class="answer-field">
+        <textarea
+          name="answer"
+          id="answer"
+          cols="1"
+          rows="40"
+          placeholder="Antworten..."
+        ></textarea>
+        <div class="button-row">
+            <div class="d-flex-sb">  
+                <div class="add w-h-40">
+                </div>
+                <div class="vector"></div>
+                <div class="emoji w-h-40"></div>
+            <div class="email w-h-40" ></div>
+            </div>
+            <div class="send w-h-40"></div>
+        </div>
+        </div>
+    </div>
+</section> 

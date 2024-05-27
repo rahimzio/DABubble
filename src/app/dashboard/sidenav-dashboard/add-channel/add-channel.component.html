@@ -1,0 +1,89 @@
+<div class="overlay_add_channel">
+  <div class="container_add_channel">
+    <div *ngIf="!userOverlay" class="place_add_channel">
+      <div class="container_heading">
+        <h2>Channel erstellen</h2>
+        <button (click)="closeOverlay()" mat-mini-fab color="primary" class="back-button">
+          <mat-icon class="back-icon">close</mat-icon>
+        </button>
+      </div>
+      <p>
+        Channels dienen deinem Team zur Kommunikation. Am besten sollten sie
+        themenbezogen sein #marketing zum Beispiel
+      </p>
+      <h3>Channel-Name</h3>
+      <form (ngSubmit)="checkFormChannelName()">
+        <input #channelName required minlength="3" name="name" [(ngModel)]="newChannel.name"
+          class="input_channel input_add" type="text" placeholder="z.B.Kooperationsprojekte" />
+        <span #validChannelName>Channel Name ist ungenügend</span>
+        <span #duplicateChannelName>Channel exestiert bereits</span>
+        <div class="container_heading_Description">
+          <h3>Beschreibung</h3>
+          <p>(optional)</p>
+        </div>
+        <input #channelDescription name="description" [(ngModel)]="newChannel.description" type="text"
+          class="input_add" />
+        <div>
+          <button type="submit" class="create_btn">Erstellen</button>
+        </div>
+      </form>
+    </div>
+
+
+    <div *ngIf="userOverlay" class="place_user_to_channel">
+      <div class="container_heading">
+        <h2>Leute hinzufügen</h2>
+        <button (click)="closeOverlay()" mat-mini-fab color="primary" class="back-button">
+          <mat-icon class="back-icon">close</mat-icon>
+        </button>
+      </div>
+
+<!-- 
+      <form>
+        <div class="container_input_add_user">
+          <input type="radio" name="addOption" [(ngModel)]="selectedOption" value="allUsers" />
+          <p>
+            Alle Mitglieder zu <span>{{ newChannel.name }}</span> hinzufügen
+          </p>
+        </div>
+        <div class="container_input_add_user">
+          <input type="radio" name="addOption" [(ngModel)]="selectedOption" value="specificPeople" />
+          <p>Bestimmte Leute hinzufügen</p>
+        </div>
+        <div class="place_input_choose_user">
+          <input [(ngModel)]="currentName" (click)="showUser()" (ngModelChange)="showUser()" name="currentName" (keydown)="showUser()"
+            *ngIf="selectedOption === 'specificPeople'" [@fadeIn] type="text" class="input_add inputAddUser" />
+          <div *ngIf=" userList && userList.length > 0" class="container_show_user">
+            <div (click)="chooseUser(user.id)" *ngFor="let user of userList" class="box_user">
+              <button>
+                <img class="user_picture" [src]="user.avatar" alt="" />
+                <div class="statuslight" [ngStyle]="{
+                    'background-color': user.isOnline ? 'green' : 'red'
+                  }" alt=""></div>
+              </button>
+              <p>{{ user.name }}</p>
+            </div>
+          </div>
+          <div class="show-choosed-user">
+            <div  *ngFor="let user of selectedUser" class="choosed-user-box">
+              <button>
+                <img class="current-user-picture" [src]="user.avatar" alt="" />
+                <div class="statuslight-choosed-user" [ngStyle]="{
+                    'background-color': user.isOnline ? 'green' : 'red'
+                  }" alt=""></div>
+              </button>
+              <p>{{ user.name }}</p>
+              <button (click)="removeSelectedUser(user.id)" mat-mini-fab color="primary" class="back-button">
+                <mat-icon class="back-icon">close</mat-icon>
+              </button>
+            </div>
+           
+          </div>
+        </div>
+        <div class="place_btn">
+          <button (click)="addUsersToChannel()" class="create_btn">Erstellen</button>
+        </div>
+      </form> -->
+    </div>
+  </div>
+</div>

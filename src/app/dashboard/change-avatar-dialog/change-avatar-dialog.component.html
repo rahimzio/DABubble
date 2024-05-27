@@ -1,0 +1,60 @@
+<mat-card>
+  <mat-card-content>
+    <div class="header">
+        <h2 mat-dialog-title>Dein Profilbild bearbeiten</h2>
+        <div class="close" (click)="close()"></div>
+      </div>
+    <div class="avatar-selection">
+      <img [src]="avatar" class="selected-avatar" alt="" />
+      <p>Aus der Liste wählen</p>
+      <div class="avatar-imgs">
+        <img
+          id="assets/img/avatars/avatar-1.svg"
+          src="assets/img/avatars/avatar-1.svg"
+          alt=""
+          (click)="selectNewAvatar($event)"
+        />
+        <img
+          id="assets/img/avatars/avatar-2.svg"
+          src="assets/img/avatars/avatar-2.svg"
+          alt=""
+          (click)="selectNewAvatar($event)"
+        />
+        <img
+          id="assets/img/avatars/avatar-3.svg"
+          src="assets/img/avatars/avatar-3.svg"
+          alt=""
+          (click)="selectNewAvatar($event)"
+        />
+        <img
+          id="assets/img/avatars/avatar-4.svg"
+          src="assets/img/avatars/avatar-4.svg"
+          alt=""
+          (click)="selectNewAvatar($event)"
+        />
+        <img
+          id="assets/img/avatars/avatar-5.svg"
+          src="assets/img/avatars/avatar-5.svg"
+          alt=""
+          (click)="selectNewAvatar($event)"
+        />
+        <img
+          id="assets/img/avatars/avatar-6.svg"
+          src="assets/img/avatars/avatar-6.svg"
+          alt=""
+          (click)="selectNewAvatar($event)"
+        />
+      </div>
+      <div class="upload-img">
+        <p>eigenes Bild verwenden</p>
+        <label class="upload-button">
+          <input (change)="uploadOwnAvatar($event)" type="file" />
+          Datei hochladen
+        </label>
+      </div>
+    </div>
+    <div class="forward-button">
+      <button (click)="updateAvatar()" class="forward">Speichern</button>
+    </div>
+  </mat-card-content>
+</mat-card>

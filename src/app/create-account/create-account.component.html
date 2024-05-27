@@ -1,0 +1,76 @@
+<section>
+  <div class="main-content">
+    <div class="logo-container">
+      <img src="assets/img/home-workspace.svg" alt="" />
+    </div>
+    <div class="card-container">
+      <mat-card>
+        <div class="back-arrow-box" routerLink="/">
+          <div class="back-arrow"></div>
+        </div>
+        <mat-card-content>
+          <mat-card-header>
+            <h1>Konto erstellen</h1>
+            <span
+              >Mit deinem Namen und deiner E-Mail-Adresse hast du dein neues
+              DABubble-Konto.</span
+            >
+          </mat-card-header>
+          <div class="input-container">
+            <div class="dflex-col-start pos-rel">
+              <input
+                placeholder="Name und Nachname"
+                class="name-input input-field"
+                type="text"
+                [(ngModel)]="newUser.name"
+                (input)="checkButtonDisabled()"
+              />
+              <p [ngStyle]="{ display: nameFailed ? 'block' : 'none' }">
+                Bitte schreiben Sie einen Namen.
+              </p>
+            </div>
+            <div class="dflex-col-start pos-rel">
+              <input
+                placeholder="beispielname@email.com"
+                class="mail-input input-field"
+                type="email"
+                [(ngModel)]="newUser.eMail"
+                (input)="checkButtonDisabled()"
+              />
+              <p [ngStyle]="{ display: mailFailed ? 'block' : 'none' }">
+                *Diese E-Mail-Adresse ist leider ungültig.
+              </p>
+            </div>
+            <div class="dflex-col-start pos-rel">
+              <input
+                placeholder="Passwort"
+                class="password-input input-field"
+                type="password"
+                [(ngModel)]="newUser.password"
+                (input)="checkButtonDisabled()"
+              />
+              <p [ngStyle]="{ display: pswFailed ? 'block' : 'none' }">
+                Bitte geben Sie ein gültiges Passwort ein.(Mindestens 8 Zeichen)
+              </p>
+            </div>
+          </div>
+          <div class="checkbox-container pos-rel">
+            <input type="checkbox" id="meineCheckbox" [(ngModel)]="isAgreed" (change)="checkButtonDisabled()"/>
+            Ich stimme der <a routerLink="/dataprotection">Datenschutzerklärung</a> zu.
+            <p class="dataprotec-error" [ngStyle]="{ display: dataprotectionFailed ? 'block' : 'none' }">
+              Sie müssen der Datenschuterklärung zustimmen.
+            </p>
+            <p *ngIf="errorMessage" class="dataprotec-error">{{ errorMessage }}</p>
+          </div>
+          <div class="forward-button">
+            <button [disabled]="disableButton" class="forward" (click)="createAccount()">Weiter</button>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+    <div class="footer-links">
+      <a routerLink="/imprint">Impressum</a>
+      <a routerLink="/dataprotection">Datenschutz</a>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "dabubble-51e17": {
+      "hosting": {
+        "dabubble": [
+          "dabubble-51e17"
+        ]
+      }
+    }
+  }, 
+  "projects": {
+    "default": "dabubble-51e17"
+  }
+}

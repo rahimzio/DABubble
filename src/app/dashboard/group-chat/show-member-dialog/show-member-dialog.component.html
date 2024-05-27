@@ -1,0 +1,76 @@
+<mat-card>
+    <section *ngIf="showMemberSection" class="section">
+        <div class="header">
+            <h3>Mitglieder</h3>
+            <button (click)="closeDialog()" class="close-btn" mat-icon-button matTooltip="Basic">
+                <mat-icon>close</mat-icon>
+            </button>
+        </div>
+        <div *ngIf="usersInChannel" class="user-container">
+            <div class="user" *ngFor="let user of usersInChannel">
+                <img class="avatar-img" [src]="user.avatar" alt="">
+                <div [ngStyle]="{
+                    'background-color': isUserOnline(user.id) ? 'green' : 'red'
+                  }"  class="statuslight"></div>
+                <div class="user-name">{{fireStoreService.getUserNameById(user.id)}}</div>
+            </div>
+        </div>
+        <div (click)="openAddMemberSection()" class="add-person-container">
+            <button class="add-person-btn" mat-icon-button matTooltip="Basic">
+                <mat-icon class="add-person-icon material-icons">person_add_outlined</mat-icon>
+            </button>
+            <span>Mitglieder hinzufügen</span>
+        </div>
+    </section>
+
+    <section *ngIf="addMemberSection" class="add-member-section">
+        <div class="header">
+            <h3>Leute hinzufügen</h3>
+            <button (click)="closeDialog()" class="close-btn" mat-icon-button matTooltip="Basic">
+                <mat-icon>close</mat-icon>
+            </button>
+        </div>
+        <div>
+           <span class="channel-name">#  {{channelData.name}}</span> 
+        </div>
+        <div>
+            <input [(ngModel)]="currentName" (click)="showUser()" (ngModelChange)="showUser()" name="currentName"
+            (keydown)="showUser()" type="text"
+            class="input_add inputAddUser" #userInput />
+           
+            <ng-template #userListDialog>
+                <div *ngIf=" userList && userList.length > 0" class="container_show_user">
+                    <div (click)="chooseUser(user.id)" *ngFor="let user of userList" class="box_user">
+                        <button>
+                            <img class="user_picture" [src]="user.avatar" alt="" />
+                            <div class="statuslight" [ngStyle]="{
+                  'background-color': user.isOnline ? 'green' : 'red'
+                }" alt=""></div>
+                        </button>
+                        <p>{{ user.name }}</p>
+                    </div>
+                </div>
+            </ng-template>
+        </div>
+
+        <div class="show-choosed-user">
+            <div *ngFor="let user of selectedUser" class="choosed-user-box">
+                <button>
+                    <img class="current-user-picture" [src]="user.avatar" alt="" />
+                    <div class="statuslight-choosed-user" [ngStyle]="{
+              'background-color': user.isOnline ? 'green' : 'red'
+            }" alt=""></div>
+                </button>
+                <p>{{ user.name }}</p>
+                <button (click)="removeSelectedUser(user.id)" mat-mini-fab color="primary" class="back-button">
+                    <mat-icon  class="back-icon">close</mat-icon>
+                </button>
+            </div>
+
+        </div>
+
+        <div class="add-member-button">
+            <button (click)="addUserToChannel(channelId)"  [disabled]="selectedUser.length === 0 ">Hinzufügen</button>
+        </div>
+    </section>  
+</mat-card>

@@ -1,0 +1,31 @@
+<mat-card>
+    <div class="header">
+      <h2 mat-dialog-title>Profil</h2>
+      <div class="close" (click)="close()"></div>
+    </div>
+    <div class="profilePicture">
+      <img
+        #profilePicture1
+        [src]="actualUser.avatar"
+        alt=""
+      />
+    </div>
+    <div class="nameSection">
+      <div class="userName">{{ this.actualUser.name }}</div>
+    </div>
+    <div class="isOnline">
+      <div *ngIf="userIsOnline">
+        <img src="assets/img/Online.svg" />Online
+      </div>
+      <div *ngIf="!userIsOnline">
+        <img src="assets/img/Offline.svg" />Abwesend
+      </div>
+    </div>
+    <div class="eMail-head">
+      <img src="assets/img/mail.svg" /> E-Mail-Adresse
+    </div>
+    <div class="eMail">{{ this.actualUser.eMail }}</div>
+    <div class="btn-section">
+        <button class="message" (click)="sendMessage()">Nachricht</button>
+    </div>
+  </mat-card>

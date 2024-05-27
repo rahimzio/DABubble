@@ -1,0 +1,49 @@
+<mat-card>
+  <div class="header">
+    <h2 mat-dialog-title># {{ name }}</h2>
+    <div class="close" (click)="close()"></div>
+  </div>
+  <!-- Channel Name Standard Ansicht -->
+  <div class="chan-name" *ngIf="!isChannelNameEdit">
+    <div class="head-cont">
+      <h3>Channel-Name</h3>
+      <div class="edit-btn" (click)="editName()">Bearbeiten</div>
+    </div>
+    <div class="pdlr-15"># {{ name }}</div>
+  </div>
+  <!-- Channel Name Bearbeiten Ansicht -->
+  <div *ngIf="isChannelNameEdit">
+    <div class="head-cont">
+      <h3>Channel-Name</h3>
+      <div class="edit-btn" (click)="saveName()">Speichern</div>
+    </div>
+    <div class="edit-channelname">#<input type="text" [value]="name" (input)="updateNameValue($event)"></div>
+  </div>
+
+  <!-- Channel Description Standard Ansicht -->
+  <div class="descr-sect" *ngIf="!isDescriptionEdit">
+    <div class="head-cont">
+      <h3>Beschreibung</h3>
+      <div class="edit-btn" (click)="editDescription()">Bearbeiten</div>
+    </div>
+    <span class="pdlr-15">{{ description }}</span>
+    <div class="line"></div>
+    <h3 class="pdb-15 pdlr-15">Erstellt von</h3>
+    <div class="name pdlr-15">{{creator}}</div>
+  </div>
+  <!-- Channel Description Bearbeiten Ansicht -->
+  <div *ngIf="isDescriptionEdit">
+    <div class="head-cont">
+      <h3>Beschreibung</h3>
+      <div class="edit-btn" (click)="saveDescription()">Speichern</div>
+    </div>
+    <div class="edit-channelname pdb-15">#<input type="text" [value]="description"
+        (input)="updateDescriptionValue($event)"></div>
+    <div class="line"></div>
+    <h3 class="pdb-15 pdlr-15">Erstellt von</h3>
+    <div class="name pdlr-15">{{creator}}</div>
+  </div>
+  <div class="leave-btn-container">
+    <button (click)="leaveChannel()" class="leave-channel-btn">Channel Verlassen</button>
+  </div>
+</mat-card>

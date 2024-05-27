@@ -1,0 +1,422 @@
+@import "./../../../../styles.scss";
+
+mat-card {
+    width: 415px;
+    height: fit-content;
+    font-family: $nunito;
+    font-size: 18px;
+    gap: 15px;
+    border-radius: 30px 0px 30px 30px;
+    overflow: hidden;
+    padding: 30px;
+}
+
+.section {
+    gap: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    >h3 {
+        font-size: 24px;
+        font-weight: 700;
+    }
+}
+
+.close-btn {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 !important;
+    transition: ease-in-out 125ms;
+    background-color: transparent !important;
+
+    &:active {
+        background-color: transparent !important;
+    }
+
+    &:hover {
+        background-color: $bg-color;
+        color: $purple1;
+    }
+}
+
+.user-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    max-height: 245px;
+    overflow-y: auto;
+
+    &::-webkit-scrollbar {
+        width: 8px;
+        border-radius: 8px;
+    }
+
+    &::-webkit-scrollbar-track {
+        background: $bg-color;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background: $purple2;
+        border-radius: 8px;
+    }
+
+    &::-webkit-scrollbar-thumb:hover {
+        background: $purple3;
+    }
+}
+
+.user {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    position: relative;
+    cursor: pointer;
+
+    &:hover {
+        background-color: $bg-color;
+        border-radius: 30px;
+        width: fit-content;
+        padding-right: 17px;
+    }
+}
+
+.user-name {
+    font-size: 18px;
+
+}
+
+.avatar-img {
+    width: 50px;
+    height: 50px;
+    border-radius: 30px;
+}
+
+.statuslight {
+
+    border-radius: 50%;
+    border: solid white 2px;
+   background-color: green;
+    position: absolute;
+    height: 10px;
+    width: 10px;
+    left: 35px;
+    top: 35px;
+}
+
+.add-person-container {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    border-radius: 30px;
+    transition: ease-in-out 125ms;
+
+    &:hover .add-person-btn {
+        background-color: $bg-color;
+        color: $purple1;
+    }
+
+    &:hover {
+        background-color: $bg-color;
+        color: $purple1;
+    }
+}
+
+.add-person-btn {
+    background-color: $bg-color;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 !important;
+    transition: ease-in-out 125ms;
+}
+
+.add-member-section {
+    gap: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.channel-name {
+    font-weight: 400;
+    font-family: $nunito;
+    font-size: 18px;
+    color: $purple2;
+}
+
+.input_add {
+    width: calc(100% - 40px);
+    min-height: 24px;
+    padding: 15px 20px 15px 20px;
+    border: solid 1px $light-purple;
+    border-radius: 36px;
+    outline: none;
+    font-size: 14px;
+    letter-spacing: 0.75px;
+}
+
+.input_add {
+    position: relative;
+}
+
+.inputAddUser {
+    position: relative;
+}
+
+//******************************************************* Bearbeitung für die add user******************************//
+::ng-deep .mdc-dialog__surface {
+    overflow-y: visible !important;
+    /* oder overflow-y: hidden; je nach Bedarf */
+}
+
+.container_show_user {
+
+    background-color: white;
+    left: 28px;
+    top: 50px;
+    border-radius: 32px;
+    border-top-left-radius: 0;
+    max-height: 130px;
+    overflow: auto;
+    border: 1px solid $light-purple;
+    box-shadow: 0 6px 10px 0 #000000 20%;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    min-width: 40%;
+    height: fit-content;
+    gap: 8px;
+    padding: 12px 0 16px 24px;
+    z-index: 2;
+    position: absolute;
+    // left: -326px;
+    //  top: -81px;
+
+    &::-webkit-scrollbar-track {
+        -webkit-box-shadow: inset 0 0 2px rgba(0, 0, 0, 0.3);
+        border-radius: 10px;
+        background: $bg-color;
+        margin-left: 1rem;
+        border-radius: 10px;
+        height: 80%;
+        background-color: transparent;
+        border-radius: 10px;
+    }
+
+    &::-webkit-scrollbar {
+        width: 12px;
+        border-radius: 10px;
+        background-color: #f5f5f5;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+        background: $purple2;
+        border-radius: 8px;
+    }
+
+    &::-webkit-scrollbar-thumb:hover {
+        background: $purple3;
+    }
+
+    .box_user {
+        display: flex;
+        gap: 16px;
+        align-items: center;
+        width: fit-content;
+        padding: 0 16px;
+        border-radius: 48px;
+        cursor: pointer;
+
+        &:hover {
+            background-color: $light-purple;
+        }
+
+        button {
+            position: relative;
+
+            .user_picture {
+                border-radius: 50%;
+                width: 60px;
+                height: 60px;
+            }
+
+            .statuslight {
+                border-radius: 50%;
+                border: solid white 2px;
+                position: absolute;
+                height: 10px;
+                width: 10px;
+                right: 2px;
+                bottom: 4.5px;
+            }
+        }
+
+        p {
+            font-size: 18px;
+            font-weight: 500;
+        }
+    }
+}
+
+.box_user {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    width: fit-content;
+    padding: 0 16px;
+    border-radius: 48px;
+    cursor: pointer;
+
+    &:hover {
+        background-color: $light-purple;
+    }
+
+    button {
+        position: relative;
+
+        .user_picture {
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+        }
+
+        .statuslight {
+            border-radius: 50%;
+            border: solid white 2px;
+            position: absolute;
+            height: 10px;
+            width: 10px;
+            right: 2px;
+            bottom: 4.5px;
+        }
+    }
+
+    p {
+        font-size: 18px;
+        font-weight: 500;
+    }
+}
+
+.user_picture {
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+}
+
+.show-choosed-user {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    overflow-y: auto;
+    max-height: 150px;
+
+    &::-webkit-scrollbar {
+        width: 8px;
+        border-radius: 8px;
+    }
+
+    &::-webkit-scrollbar-track {
+        background: $bg-color;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background: $purple2;
+        border-radius: 8px;
+    }
+
+    &::-webkit-scrollbar-thumb:hover {
+        background: $purple3;
+    }
+}
+
+.choosed-user-box {
+    display: flex;
+    align-items: center;
+    height: 60px;
+    gap: 8px;
+    display: flex;
+    background-color: $light-purple;
+    width: fit-content;
+    padding: 0 16px;
+    border-radius: 48px;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: 500;
+
+    >button {
+        position: relative;
+        display: flex;
+        align-items: center;
+    }
+}
+
+.current-user-picture {
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+}
+
+.statuslight-choosed-user {
+    border-radius: 50%;
+    border: solid white 2px;
+    position: absolute;
+    height: 10px;
+    width: 10px;
+    right: 2px;
+    bottom: 4.5px;
+}
+
+.back-button {
+    border: none;
+    box-shadow: none;
+    color: black;
+
+    &:hover {
+        border: none;
+        box-shadow: none;
+    }
+}
+
+.add-member-button {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+
+    >button {
+        width: 150px;
+        height: 50px;
+        border-radius: 25px;
+        font-family: $nunito;
+        font-weight: 700;
+        font-size: 18px;
+        background-color: $purple1;
+        color: white;
+        &:hover{
+            background-color: lighten($purple1, 10%);
+        }
+
+        &:disabled{
+            background-color: rgba(104, 104, 104, 1);
+        }
+    }
+}
+
+@media(max-width: 500px){
+    mat-card {
+        width: 100%;
+        height: 100%;
+        border-radius: 0px;
+    }
+}

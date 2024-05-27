@@ -1,0 +1,37 @@
+section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+h3 {
+  font-size: 20px;
+  font-weight: 400;
+}
+
+mat-card {
+  padding: 20px;
+  box-shadow: -2px 0px 6px 0px rgb(0, 0, 0, 0.2);
+  margin: 10px;
+}
+
+.emo-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.emoji {
+  cursor: pointer;
+  font-size: 24px;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &:hover {
+    font-size: 28px;
+  }
+}
